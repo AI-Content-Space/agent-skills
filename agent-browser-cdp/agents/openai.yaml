@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent Browser CDP"
+  short_description: "启动带 CDP 的 Chrome，复用登录态，并直接读取或导出 Figma 页面内容。"
+  default_prompt: "Use this skill when browser work needs a real Chrome session with CDP, especially for logged-in Figma workflows that need reading layer/property details or exporting assets directly from the live page."
