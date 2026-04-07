@@ -1,0 +1,7 @@
+{
+  "name": "requirement-analyzer",
+  "description": "Review an existing requirement, PRD, or spec for ambiguity, business closure, impact, feasibility, and development readiness.",
+  "version": "1.1.0",
+  "trigger": ["分析需求", "评审 PRD", "需求分析", "需求文档", "找出需求不明确", "评估需求可行性", "影响范围分析"],
+  "instructions": "Read SKILL.md and follow it as the only canonical instruction source for this skill."
+}

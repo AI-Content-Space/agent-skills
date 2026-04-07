@@ -1,0 +1,246 @@
+{
+  "name": "模糊词检测清单",
+  "version": "1.0.0",
+  "description": "常见模糊词和明确化建议",
+  "languages": {
+    "zh": {
+      "time": [
+        {
+          "pattern": "及时",
+          "suggestion": "请明确为具体时间，如：5 秒内、30 分钟内、T+1 日内",
+          "examples": ["及时通知用户 → 5 分钟内通过 APP 推送通知用户"]
+        },
+        {
+          "pattern": "尽快",
+          "suggestion": "请明确为具体时间或 SLA，如：2 小时内、24 小时内",
+          "examples": ["尽快处理 → 2 小时内处理完成"]
+        },
+        {
+          "pattern": "实时",
+          "suggestion": "请明确为具体延迟要求，如：延迟<1 秒、延迟<5 秒",
+          "examples": ["实时更新 → 延迟<5 秒更新"]
+        },
+        {
+          "pattern": "promptly",
+          "suggestion": "请明确为具体时间",
+          "examples": []
+        },
+        {
+          "pattern": "盘后",
+          "suggestion": "请明确为具体时间点，如：交易日 16:00 EST 后",
+          "examples": ["盘后处理 → 交易日 16:30 EST 开始处理"]
+        },
+        {
+          "pattern": "日切时",
+          "suggestion": "请明确为具体时间和时区，如：交易日 16:30 EST",
+          "examples": []
+        },
+        {
+          "pattern": "立即",
+          "suggestion": "请明确为具体延迟，如：同步、<1 秒、<1 分钟",
+          "examples": ["立即释放 → 撤销操作后同步释放"]
+        }
+      ],
+      "quantity": [
+        {
+          "pattern": "足额",
+          "suggestion": "请明确为具体计算公式或数值",
+          "examples": ["足额购买力 → 购买力 >= 行权数量 × 行权价 × 100"]
+        },
+        {
+          "pattern": "足够",
+          "suggestion": "请明确为具体数值或判断条件",
+          "examples": []
+        },
+        {
+          "pattern": "大量",
+          "suggestion": "请明确为具体数量级，如：>1000、>10000",
+          "examples": []
+        },
+        {
+          "pattern": "若干",
+          "suggestion": "请明确为具体数值或范围",
+          "examples": []
+        },
+        {
+          "pattern": "最大",
+          "suggestion": "请明确计算公式或上限值",
+          "examples": ["最大可提交数量 = 持仓数量 - 冻结数量 - 挂单数量"]
+        },
+        {
+          "pattern": "最小",
+          "suggestion": "请明确计算公式或下限值",
+          "examples": []
+        },
+        {
+          "pattern": "适量",
+          "suggestion": "请明确为具体数值或范围",
+          "examples": []
+        }
+      ],
+      "status": [
+        {
+          "pattern": "正常",
+          "suggestion": "请明确为具体状态枚举值或判定条件",
+          "examples": ["正常状态 → status=ACTIVE"]
+        },
+        {
+          "pattern": "异常",
+          "suggestion": "请明确为具体错误码或状态",
+          "examples": ["异常情况 → 错误码 1001-1099"]
+        },
+        {
+          "pattern": "失败",
+          "suggestion": "请明确为具体失败状态和错误处理",
+          "examples": []
+        },
+        {
+          "pattern": "成功",
+          "suggestion": "请明确为具体成功状态码",
+          "examples": ["处理成功 → status=PROCESSED"]
+        },
+        {
+          "pattern": "待处理",
+          "suggestion": "请明确为具体状态枚举",
+          "examples": ["待处理 → status=PENDING"]
+        }
+      ],
+      "subject": [
+        {
+          "pattern": "运营人员",
+          "suggestion": "请明确为具体角色定义和权限",
+          "examples": ["运营人员 → 角色：OPERATION_ADMIN，权限：download_file, delete_record"]
+        },
+        {
+          "pattern": "管理员",
+          "suggestion": "请明确为具体角色定义",
+          "examples": []
+        },
+        {
+          "pattern": "客户",
+          "suggestion": "请明确为具体用户类型",
+          "examples": ["客户 → 个人投资者/机构投资者"]
+        },
+        {
+          "pattern": "上游",
+          "suggestion": "请明确为具体系统名称和接口",
+          "examples": ["上游系统 → 上手券商清算系统，接口：SFTP 文件传输"]
+        },
+        {
+          "pattern": "下游",
+          "suggestion": "请明确为具体系统名称",
+          "examples": ["下游系统 → 账务系统、风控系统"]
+        }
+      ],
+      "condition": [
+        {
+          "pattern": "如有必要",
+          "suggestion": "请明确为具体触发条件",
+          "examples": []
+        },
+        {
+          "pattern": "视情况而定",
+          "suggestion": "请明确为具体判断条件和决策树",
+          "examples": []
+        },
+        {
+          "pattern": "特殊情况",
+          "suggestion": "请明确为具体场景列表",
+          "examples": ["特殊情况 → 节假日、提前收盘日、市场中断"]
+        },
+        {
+          "pattern": "if needed",
+          "suggestion": "请明确为具体触发条件",
+          "examples": []
+        },
+        {
+          "pattern": "可能",
+          "suggestion": "请明确为概率或具体条件",
+          "examples": []
+        }
+      ],
+      "quality": [
+        {
+          "pattern": "高性能",
+          "suggestion": "请明确为具体指标，如：QPS>1000, P99<100ms",
+          "examples": []
+        },
+        {
+          "pattern": "高可用",
+          "suggestion": "请明确为可用性目标，如：99.9%、99.99%",
+          "examples": []
+        },
+        {
+          "pattern": "稳定",
+          "suggestion": "请明确为具体稳定性指标",
+          "examples": []
+        },
+        {
+          "pattern": "robust",
+          "suggestion": "请明确为具体容错能力",
+          "examples": []
+        }
+      ]
+    },
+    "en": {
+      "time": [
+        {
+          "pattern": "timely",
+          "suggestion": "Specify exact time, e.g., within 5 seconds, within 30 minutes",
+          "examples": []
+        },
+        {
+          "pattern": "as soon as possible",
+          "suggestion": "Specify SLA, e.g., within 2 hours, within 24 hours",
+          "examples": []
+        },
+        {
+          "pattern": "real-time",
+          "suggestion": "Specify latency requirement, e.g., <1s, <5s",
+          "examples": []
+        },
+        {
+          "pattern": "immediately",
+          "suggestion": "Specify delay, e.g., synchronous, <1s, <1min",
+          "examples": []
+        }
+      ],
+      "quantity": [
+        {
+          "pattern": "sufficient",
+          "suggestion": "Specify formula or exact value",
+          "examples": []
+        },
+        {
+          "pattern": "adequate",
+          "suggestion": "Specify formula or exact value",
+          "examples": []
+        },
+        {
+          "pattern": "maximum",
+          "suggestion": "Specify formula or upper bound",
+          "examples": []
+        },
+        {
+          "pattern": "minimum",
+          "suggestion": "Specify formula or lower bound",
+          "examples": []
+        }
+      ]
+    }
+  },
+  "detection_rules": {
+    "auto_detect_language": true,
+    "case_sensitive": false,
+    "include_examples": true
+  },
+  "output_format": {
+    "ambiguity": {
+      "location": "文档位置（章节/段落）",
+      "original_text": "原始模糊描述",
+      "category": "类别（time/quantity/status/subject/condition/quality）",
+      "suggestion": "明确化建议",
+      "priority": "P0/P1/P2"
+    }
+  }
+}

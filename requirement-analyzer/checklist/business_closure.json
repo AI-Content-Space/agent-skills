@@ -1,0 +1,162 @@
+{
+  "name": "业务闭环检查清单",
+  "version": "1.0.0",
+  "description": "检查需求是否形成完整的业务闭环",
+  "checklist": [
+    {
+      "category": "输入环节",
+      "items": [
+        {
+          "id": "IN-01",
+          "question": "数据来源是否明确？",
+          "description": "数据从哪个系统/表/接口获取",
+          "examples": ["从 Asset Service 获取持仓数据", "从行情服务获取收盘价"]
+        },
+        {
+          "id": "IN-02",
+          "question": "触发条件是否可量化？",
+          "description": "什么事件/时间点触发处理",
+          "examples": ["每个交易日 16:30", "用户提交表单后"]
+        },
+        {
+          "id": "IN-03",
+          "question": "输入格式是否明确？",
+          "description": "数据格式、字段定义、编码格式",
+          "examples": ["CSV 文件，UTF-8 编码", "JSON 格式，字段见下表"]
+        },
+        {
+          "id": "IN-04",
+          "question": "前置依赖是否就绪？",
+          "description": "依赖哪些前置任务/系统",
+          "examples": ["需等待日终批处理完成", "依赖持仓系统数据同步"]
+        },
+        {
+          "id": "IN-05",
+          "question": "输入异常如何处理？",
+          "description": "数据缺失/错误/延迟时的处理策略",
+          "examples": ["数据缺失时告警并跳过", "格式错误时记录日志并拒绝"]
+        }
+      ]
+    },
+    {
+      "category": "处理环节",
+      "items": [
+        {
+          "id": "PROC-01",
+          "question": "业务规则是否完整？",
+          "description": "所有业务规则是否有明确定义",
+          "examples": ["ITM 判断阈值$0.01", "分配算法公式"]
+        },
+        {
+          "id": "PROC-02",
+          "question": "异常分支是否覆盖？",
+          "description": "异常场景的处理逻辑",
+          "examples": ["购买力不足时拒绝", "持仓不足时截断"]
+        },
+        {
+          "id": "PROC-03",
+          "question": "边界条件是否定义？",
+          "description": "最大值、最小值、空值、零值处理",
+          "examples": ["数量为 0 时跳过", "上限为持仓数量"]
+        },
+        {
+          "id": "PROC-04",
+          "question": "并发控制是否考虑？",
+          "description": "并发场景下的冲突处理",
+          "examples": ["分布式锁防止重复执行", "乐观锁处理并发修改"]
+        },
+        {
+          "id": "PROC-05",
+          "question": "事务边界是否明确？",
+          "description": "哪些操作在同一事务内",
+          "examples": ["冻结和记录写入同一事务", "先冻结后写记录，失败则回滚"]
+        },
+        {
+          "id": "PROC-06",
+          "question": "恢复机制是否存在？",
+          "description": "处理中断后的恢复策略",
+          "examples": ["断点续传", "幂等重试"]
+        }
+      ]
+    },
+    {
+      "category": "输出环节",
+      "items": [
+        {
+          "id": "OUT-01",
+          "question": "输出物是什么？",
+          "description": "生成什么数据/文件/消息",
+          "examples": ["期权持仓流水", "CSV 文件", "APP 推送消息"]
+        },
+        {
+          "id": "OUT-02",
+          "question": "接收方是谁？",
+          "description": "输出给哪个系统/角色",
+          "examples": ["写入 MySQL 数据库", "发送给上手券商", "推送给客户"]
+        },
+        {
+          "id": "OUT-03",
+          "question": "输出格式是否明确？",
+          "description": "输出的数据结构/文件格式",
+          "examples": ["CSV 字段：account, symbol, quantity", "JSON 响应体结构"]
+        },
+        {
+          "id": "OUT-04",
+          "question": "通知机制是否完整？",
+          "description": "如何通知接收方",
+          "examples": ["邮件发送", "消息队列推送", "webhook 回调"]
+        },
+        {
+          "id": "OUT-05",
+          "question": "存储策略是否定义？",
+          "description": "输出数据的保留时间和归档策略",
+          "examples": ["保留 30 天", "归档到冷存储"]
+        }
+      ]
+    },
+    {
+      "category": "反馈环节",
+      "items": [
+        {
+          "id": "FB-01",
+          "question": "结果确认机制？",
+          "description": "如何确认处理成功",
+          "examples": ["状态更新为 PROCESSED", "接收方返回 ACK"]
+        },
+        {
+          "id": "FB-02",
+          "question": "对账机制？",
+          "description": "如何验证处理结果正确",
+          "examples": ["omnibus 与客户层面对账", "总量一致性校验"]
+        },
+        {
+          "id": "FB-03",
+          "question": "错误处理机制？",
+          "description": "处理失败时的错误处理流程",
+          "examples": ["失败重试 3 次", "告警并转人工"]
+        },
+        {
+          "id": "FB-04",
+          "question": "可追溯性？",
+          "description": "是否可追溯处理历史",
+          "examples": ["记录操作日志", "保存处理中间数据"]
+        },
+        {
+          "id": "FB-05",
+          "question": "监控告警？",
+          "description": "关键指标的监控和告警规则",
+          "examples": ["任务执行时长>5 分钟告警", "失败次数>3 告警"]
+        }
+      ]
+    }
+  ],
+  "usage": {
+    "description": "在分析需求时，逐项检查上述清单，标记完成状态",
+    "status_codes": {
+      "✅": "已明确，满足要求",
+      "⚠️": "部分明确，需补充细节",
+      "❌": "未明确，阻塞开发",
+      "N/A": "不适用"
+    }
+  }
+}

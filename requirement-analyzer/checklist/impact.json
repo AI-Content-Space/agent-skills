@@ -1,0 +1,178 @@
+{
+  "name": "影响范围分析清单",
+  "version": "1.0.0",
+  "description": "分析需求变更的影响范围",
+  "categories": {
+    "data_impact": {
+      "name": "数据影响",
+      "questions": [
+        {
+          "id": "DATA-01",
+          "question": "需要创建哪些新表/集合？",
+          "fields": ["表名", "字段设计", "索引设计", "数据量预估"]
+        },
+        {
+          "id": "DATA-02",
+          "question": "现有表结构需要哪些变更？",
+          "fields": ["表名", "变更类型 (ADD/MODIFY/DROP)", "影响评估"]
+        },
+        {
+          "id": "DATA-03",
+          "question": "是否需要历史数据迁移？",
+          "fields": ["迁移数据量", "迁移窗口", "回滚方案"]
+        },
+        {
+          "id": "DATA-04",
+          "question": "数据保留策略是什么？",
+          "fields": ["保留时长", "归档策略", "删除规则"]
+        },
+        {
+          "id": "DATA-05",
+          "question": "是否影响现有数据一致性？",
+          "fields": ["一致性要求", "对账机制"]
+        }
+      ]
+    },
+    "interface_impact": {
+      "name": "接口影响",
+      "questions": [
+        {
+          "id": "IF-01",
+          "question": "需要新增哪些 API？",
+          "fields": ["接口路径", "方法", "请求参数", "响应格式"]
+        },
+        {
+          "id": "IF-02",
+          "question": "现有接口需要哪些变更？",
+          "fields": ["接口路径", "变更类型", "兼容性评估"]
+        },
+        {
+          "id": "IF-03",
+          "question": "依赖哪些外部服务？",
+          "fields": ["服务名称", "依赖类型 (同步/异步)", "SLA 要求"]
+        },
+        {
+          "id": "IF-04",
+          "question": "哪些下游系统需要配合改造？",
+          "fields": ["系统名称", "改造内容", "排期依赖"]
+        },
+        {
+          "id": "IF-05",
+          "question": "接口兼容性如何保障？",
+          "fields": ["版本策略", "灰度方案", "回滚计划"]
+        }
+      ]
+    },
+    "process_impact": {
+      "name": "流程影响",
+      "questions": [
+        {
+          "id": "PROC-01",
+          "question": "哪些现有业务流程需要变更？",
+          "fields": ["流程名称", "变更环节", "影响程度"]
+        },
+        {
+          "id": "PROC-02",
+          "question": "是否与现有流程冲突？",
+          "fields": ["冲突点", "解决方案"]
+        },
+        {
+          "id": "PROC-03",
+          "question": "是否需要新增审批环节？",
+          "fields": ["审批节点", "审批人角色", "审批条件"]
+        },
+        {
+          "id": "PROC-04",
+          "question": "用户操作流程是否改变？",
+          "fields": ["变更页面", "操作步骤变化", "培训需求"]
+        }
+      ]
+    },
+    "user_impact": {
+      "name": "用户影响",
+      "questions": [
+        {
+          "id": "USR-01",
+          "question": "影响哪些用户角色？",
+          "fields": ["角色名称", "影响描述", "影响程度"]
+        },
+        {
+          "id": "USR-02",
+          "question": "UI/UX 是否需要变更？",
+          "fields": ["变更页面", "变更类型", "设计资源需求"]
+        },
+        {
+          "id": "USR-03",
+          "question": "是否需要用户通知？",
+          "fields": ["通知渠道", "通知内容", "通知时机"]
+        },
+        {
+          "id": "USR-04",
+          "question": "是否需要用户培训？",
+          "fields": ["培训对象", "培训内容", "培训方式"]
+        }
+      ]
+    },
+    "ops_impact": {
+      "name": "运维影响",
+      "questions": [
+        {
+          "id": "OPS-01",
+          "question": "是否需要新增监控指标？",
+          "fields": ["指标名称", "采集方式", "告警阈值"]
+        },
+        {
+          "id": "OPS-02",
+          "question": "是否需要新增告警规则？",
+          "fields": ["告警条件", "告警级别", "通知人"]
+        },
+        {
+          "id": "OPS-03",
+          "question": "是否需要新增运维工具？",
+          "fields": ["工具名称", "功能描述", "开发工作量"]
+        },
+        {
+          "id": "OPS-04",
+          "question": "部署方式是否有特殊要求？",
+          "fields": ["部署顺序", "灰度策略", "回滚方案"]
+        },
+        {
+          "id": "OPS-05",
+          "question": "日志记录是否完整？",
+          "fields": ["日志级别", "日志内容", "存储时长"]
+        }
+      ]
+    }
+  },
+  "output_template": {
+    "impact_matrix": [
+      {
+        "category": "数据影响",
+        "impact_level": "高/中/低",
+        "details": [],
+        "action_items": []
+      }
+    ],
+    "risk_assessment": {
+      "technical_risk": "高/中/低",
+      "business_risk": "高/中/低",
+      "timeline_risk": "高/中/低"
+    },
+    "dependencies": [
+      {
+        "name": "依赖项名称",
+        "type": "内部/外部",
+        "status": "已确认/待确认/有风险",
+        "owner": "负责人",
+        "eta": "预计完成时间"
+      }
+    ]
+  },
+  "usage": {
+    "step1": "遍历所有分类下的问题",
+    "step2": "对每个问题填写相关信息",
+    "step3": "评估影响程度（高/中/低）",
+    "step4": "生成行动项清单",
+    "step5": "识别关键依赖和风险"
+  }
+}
